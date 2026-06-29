@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everstone Agency — Helping brands climb higher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1E7BFF; --blue-deep:#1257CC; --blue-soft:#5AA0FF; --blue-tint:#EAF2FF;
+  --ink:#0C1626; --slate:#33425C;
+  --paper:#FFFFFF; --paper-2:#F4F7FC; --paper-3:#ECF1F8;
+  --text:#0C1626; --muted:#5A6B85; --line:#E4EAF2;
+  --display:'Space Grotesk',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+  --maxw:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--text);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
+
+/* ---------- LOGO ---------- */
+.logo{display:flex;align-items:center;gap:11px}
+.logo svg{width:34px;height:34px;flex:none}
+.logo-txt{font-family:var(--display);font-weight:700;letter-spacing:.04em;line-height:1}
+.logo-txt .top{font-size:1.02rem;display:block;color:var(--ink)}
+.logo-txt .sub{font-size:.52rem;letter-spacing:.42em;color:var(--blue);font-weight:600;display:block;margin-top:2px}
+footer .logo-txt .top{color:#fff}
+
+/* ---------- NAV ---------- */
+header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+header.stuck{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(12,22,38,.05)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{font-size:.85rem;font-weight:500;padding:8px 15px;border-radius:8px;color:var(--slate);transition:.2s;cursor:pointer}
+.nav-links a:hover{color:var(--ink);background:var(--paper-2)}
+.nav-links a.active{color:var(--blue-deep);background:var(--blue-tint)}
+.nav-cta{background:var(--blue);color:#fff!important;font-weight:600;padding:10px 20px!important;border-radius:9px;box-shadow:0 6px 18px rgba(30,123,255,.32)}
+.nav-cta:hover{background:var(--blue-deep)!important;transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--ink);border-radius:2px}
+
+/* ---------- PAGES ---------- */
+.page{display:none;animation:fade .45s ease}
+.page.show{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- BUTTONS ---------- */
+.btn{font-family:var(--body);font-weight:600;font-size:.92rem;padding:14px 28px;border-radius:11px;cursor:pointer;border:0;transition:.22s;display:inline-flex;align-items:center;gap:9px}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 30px rgba(30,123,255,.3)}
+.btn-primary:hover{background:var(--blue-deep);transform:translateY(-2px)}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue-deep)}
+.btn-light{background:#fff;color:var(--blue-deep)}
+.btn-light:hover{transform:translateY(-2px)}
+
+/* ---------- EYEBROW / HEADINGS ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--blue-deep);margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--blue)}
+.sec{padding:104px 0}
+.sec-head{max-width:680px;margin-bottom:56px}
+.sec-head h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.4vw,3.1rem);letter-spacing:-.02em;line-height:1.06}
+.sec-head p{color:var(--muted);font-size:1.08rem;margin-top:18px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:90px 0 0;background:linear-gradient(180deg,var(--blue-tint) 0%,#fff 78%);overflow:hidden}
+.hero .glow{position:absolute;top:-160px;right:-120px;width:620px;height:620px;background:radial-gradient(circle,rgba(30,123,255,.16),transparent 64%);pointer-events:none}
+.hero .contours{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.hero-inner{position:relative;z-index:3;padding:56px 0 30px}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,7vw,5.1rem);line-height:1.02;letter-spacing:-.025em;max-width:16ch}
+.hero h1 .grad{background:linear-gradient(100deg,var(--blue),var(--blue-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--slate);font-size:clamp(1.02rem,2vw,1.2rem);max-width:52ch;margin:26px 0 36px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-foot{position:relative;z-index:2;width:100%}
+.hero-range{line-height:0}
+.hero-range svg{width:100%;height:auto;display:block}
+.ascent{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.4s ease .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.ticks{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:16px 0 22px}
+.ticks span{color:var(--slate)}
+.ticks b{color:var(--blue-deep);font-weight:600}
+
+/* ---------- MARQUEE ---------- */
+.marq{background:var(--ink);color:#fff;padding:18px 0;overflow:hidden}
+.marq-track{display:flex;gap:60px;white-space:nowrap;animation:scroll 26s linear infinite;font-family:var(--display);font-weight:600;font-size:1.05rem;color:#9FB2CE}
+.marq-track span{display:inline-flex;align-items:center;gap:60px}
+.marq-track i{color:var(--blue-soft);font-style:normal}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- SERVICES / STAGES ---------- */
+.stages{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.stage{background:#fff;padding:38px;display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:start;transition:.25s}
+.stage:hover{background:var(--paper-2)}
+.stage .alt{font-family:var(--mono);color:var(--blue-deep);font-size:.78rem;padding-top:6px;white-space:nowrap}
+.stage h3{font-family:var(--display);font-weight:600;font-size:1.5rem;letter-spacing:-.01em}
+.stage p{color:var(--muted);margin-top:10px;max-width:62ch}
+.stage .arrow{font-size:1.4rem;color:var(--line);transition:.25s;align-self:center}
+.stage:hover .arrow{color:var(--blue);transform:translateX(4px)}
+
+/* ---------- STATS (deep-blue summit band) ---------- */
+.band{background:linear-gradient(135deg,var(--blue-deep),var(--ink));color:#fff;position:relative;overflow:hidden}
+.band .contours{position:absolute;inset:0;opacity:.4;pointer-events:none}
+.stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+.stat .num{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,5vw,3.6rem);letter-spacing:-.02em;line-height:1}
+.stat .lbl{color:#B9CBE6;margin-top:10px;font-size:.92rem}
+
+/* ---------- WORK ---------- */
+.work{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.case{border-radius:18px;overflow:hidden;color:#fff;position:relative;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;padding:34px;cursor:pointer;transition:.3s;border:1px solid var(--line)}
+.case:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(12,22,38,.18)}
+.case .bg{position:absolute;inset:0;z-index:0}
+.case .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(12,22,38,.12),rgba(12,22,38,.82))}
+.case .meta{position:relative;z-index:2}
+.case .tag{color:var(--blue-soft)}
+.case h3{font-family:var(--display);font-weight:600;font-size:1.5rem;margin:10px 0 6px}
+.case .res{color:#C7D5EC;font-size:.92rem}
+.case.feat{grid-column:1 / -1;min-height:300px}
+
+/* ---------- ABOUT ---------- */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.split .lead{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.6vw,1.7rem);line-height:1.4;letter-spacing:-.01em}
+.split .lead b{color:var(--blue-deep);font-weight:700}
+.split p+p{margin-top:16px;color:var(--muted)}
+.values{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.value{background:#fff;padding:24px 26px}
+.value h4{font-family:var(--display);font-weight:600;font-size:1.08rem;display:flex;gap:12px;align-items:center}
+.value h4 .d{width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.value p{color:var(--muted);font-size:.94rem;margin-top:8px;padding-left:20px}
+
+/* ---------- PROCESS ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.step{padding:30px 22px 0;border-left:1px solid var(--line)}
+.step:first-child{border-left:0;padding-left:0}
+.step .n{font-family:var(--mono);color:var(--blue-deep);font-size:.8rem}
+.step h4{font-family:var(--display);font-weight:600;font-size:1.18rem;margin:14px 0 8px}
+.step p{color:var(--muted);font-size:.92rem}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.82rem;font-weight:600;margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:10px;font-family:var(--body);font-size:.95rem;background:#fff;transition:.2s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,123,255,.14)}
+.contact-side{background:linear-gradient(150deg,var(--blue-deep),var(--ink));color:#fff;border-radius:18px;padding:42px 38px}
+.contact-side h3{font-family:var(--display);font-weight:600;font-size:1.6rem;margin-bottom:8px}
+.contact-side .s-muted{color:#B9CBE6}
+.cline{display:flex;gap:14px;align-items:center;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.cline:last-child{border-bottom:0}
+.cline .ic{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.cline b{font-family:var(--display);font-size:.95rem}
+.cline small{color:#B9CBE6;display:block}
+
+/* ---------- CTA ---------- */
+.cta-band{text-align:center;padding:104px 0;position:relative;z-index:2}
+.cta-band h2{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,5.5vw,3.9rem);letter-spacing:-.02em;line-height:1.04;max-width:18ch;margin:0 auto 16px}
+.cta-band p{color:#C7D5EC;max-width:46ch;margin:0 auto 34px;font-size:1.08rem}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:#fff;padding:60px 0 30px}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-top p{color:#9FB2CE;font-size:.92rem;max-width:34ch;margin-top:16px}
+.fcol h5{font-family:var(--display);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-soft);margin-bottom:16px}
+.fcol a{display:block;color:#9FB2CE;font-size:.92rem;padding:6px 0;cursor:pointer}
+.fcol a:hover{color:#fff}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:#9FB2CE;font-size:.82rem;flex-wrap:wrap;gap:12px}
+
+/* ---------- PAGE HERO (inner pages) ---------- */
+.phero{background:linear-gradient(180deg,var(--blue-tint),#fff);padding:120px 0 70px;position:relative;overflow:hidden}
+.phero .glow{position:absolute;top:-160px;right:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(30,123,255,.14),transparent 64%)}
+.phero h1{position:relative;z-index:2;font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-.025em;line-height:1.05;max-width:18ch}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:880px){
+  .nav-links{position:fixed;inset:74px 0 auto 0;background:#fff;flex-direction:column;align-items:stretch;padding:14px 20px 24px;gap:4px;border-bottom:1px solid var(--line);box-shadow:0 14px 30px rgba(12,22,38,.1);transform:translateY(-140%);transition:.3s;z-index:55}
+  .nav-links.open{transform:none}
+  .nav-links a{padding:13px 14px;font-size:.98rem}
+  .burger{display:flex}
+  .stats{grid-template-columns:repeat(2,1fr);gap:34px 24px}
+  .work,.split,.contact-grid{grid-template-columns:1fr}
+  .case.feat{grid-column:auto}
+  .steps{grid-template-columns:1fr 1fr}
+  .step{border-left:0;padding:26px 0 0}
+  .stage{grid-template-columns:1fr;gap:8px;padding:28px 24px}
+  .stage .arrow{display:none}.stage .alt{padding-top:0}
+  .split{gap:40px}
+}
+@media(max-width:560px){.stats,.steps{grid-template-columns:1fr}.foot-top{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.ascent{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<!-- defs for gradient reuse -->
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5AA0FF"/><stop offset="1" stop-color="#1257CC"/></linearGradient>
+</defs></svg>
+
+<!-- ============ HEADER ============ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <div class="logo" onclick="go('home')" style="cursor:pointer">
+      <svg viewBox="0 0 100 80" aria-label="Everstone Agency">
+        <path fill="url(#lg)" d="M3 70 L30 24 L40 40 L52 8 L66 38 L72 30 L97 70 Z M40 40 L46 30 L52 8 Z"/>
+      </svg>
+      <span class="logo-txt"><span class="top">EVERSTONE</span><span class="sub">AGENCY</span></span>
+    </div>
+    <nav class="nav-links" id="navlinks">
+      <a data-pg="home" class="active" onclick="go('home')">Home</a>
+      <a data-pg="services" onclick="go('services')">Services</a>
+      <a data-pg="work" onclick="go('work')">Work</a>
+      <a data-pg="about" onclick="go('about')">About</a>
+      <a data-pg="contact" onclick="go('contact')">Contact</a>
+      <a class="nav-cta" onclick="go('contact')">Start a project</a>
+    </nav>
+    <div class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<main>
+<!-- ============ HOME ============ -->
+<section class="page show" id="home">
+  <div class="hero">
+    <div class="glow"></div>
+    <svg class="contours" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="#1E7BFF" stroke-width="1">
+        <path d="M-50 540 Q300 450 600 520 T1250 480" opacity=".10"/>
+        <path d="M-50 580 Q300 490 600 560 T1250 520" opacity=".09"/>
+        <path d="M-50 620 Q300 530 600 600 T1250 560" opacity=".07"/>
+      </g>
+    </svg>
+    <div class="wrap hero-inner">
+      <span class="eyebrow mono">Web · Branding · Social · Marketing</span>
+      <h1>Helping brands <span class="grad">climb higher.</span></h1>
+      <p>Everstone is a full-service growth agency. We turn ideas into design, traffic, and revenue — and build the brands that get there to stay.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="go('contact')">Start a project →</button>
+        <button class="btn btn-ghost" onclick="go('work')">See our work</button>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <div class="hero-range">
+        <svg viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 200 L150 140 L240 162 L360 70 L470 122 L560 92 L640 200 Z" fill="#D7E5FB"/>
+          <path d="M520 200 L640 92 L720 132 L840 44 L960 116 L1060 80 L1200 150 L1200 200 Z" fill="#C2D7F6"/>
+          <polyline class="ascent" points="0,188 240,156 470,118 640,88 840,56 1060,80 1200,142" fill="none" stroke="#1E7BFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="840" cy="56" r="5" fill="#1257CC"/>
+        </svg>
+      </div>
+      <div class="wrap"><div class="ticks mono">
+        <span><b>01</b> Strategy</span><span><b>02</b> Design</span><span><b>03</b> Build</span><span><b>04</b> Grow</span>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="marq"><div class="marq-track">
+    <span>Web Design <i>⛰</i> Branding <i>⛰</i> Social Media <i>⛰</i> Paid Ads <i>⛰</i> SEO <i>⛰</i> Content <i>⛰</i> Strategy <i>⛰</i> </span>
+    <span>Web Design <i>⛰</i> Branding <i>⛰</i> Social Media <i>⛰</i> Paid Ads <i>⛰</i> SEO <i>⛰</i> Content <i>⛰</i> Strategy <i>⛰</i> </span>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow mono">What we do</span><h2>Four disciplines, one ascent.</h2>
+      <p>Every engagement moves a brand up the same path — from positioning to performance. Pick a stage, or take the whole climb.</p></div>
+    <div class="stages">
+      <div class="stage rv"><span class="alt">↑ 1,200m</span><div><h3>Web Design & Development</h3><p>Conversion-built WordPress and bespoke sites — fast, responsive, and made to be found.</p></div><span class="arrow">→</span></div>
+      <div class="stage rv"><span class="alt">↑ 2,400m</span><div><h3>Branding & Identity</h3><p>Logos, systems and messaging that hold up across every channel and every screen.</p></div><span class="arrow">→</span></div>
+      <div class="stage rv"><span class="alt">↑ 3,600m</span><div><h3>Social Media</h3><p>Content and community management that keeps brands visible and worth following.</p></div><span class="arrow">→</span></div>
+      <div class="stage rv"><span class="alt">↑ 4,800m</span><div><h3>Marketing & Paid Growth</h3><p>Google and Meta campaigns measured on revenue, not vanity clicks.</p></div><span class="arrow">→</span></div>
+    </div>
+    <div style="margin-top:36px" class="rv"><button class="btn btn-primary" onclick="go('services')">All services →</button></div>
+  </div></div>
+
+  <div class="band sec" style="padding:88px 0">
+    <svg class="contours" viewBox="0 0 1200 400" preserveAspectRatio="none"><g fill="none" stroke="#fff" stroke-width="1"><path d="M0 300 Q300 230 600 290 T1200 260" opacity=".14"/><path d="M0 340 Q300 270 600 330 T1200 300" opacity=".1"/></g></svg>
+    <div class="wrap"><div class="stats">
+      <div class="stat rv"><div class="num">120+</div><div class="lbl">Brands launched</div></div>
+      <div class="stat rv"><div class="num">3.4×</div><div class="lbl">Avg. return on ad spend</div></div>
+      <div class="stat rv"><div class="num">9 yrs</div><div class="lbl">Building & growing</div></div>
+      <div class="stat rv"><div class="num">£14M</div><div class="lbl">Revenue driven for clients</div></div>
+    </div></div>
+  </div>
+
+  <div class="sec" style="background:var(--paper-2)"><div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow mono">Selected work</span><h2>Proof, not promises.</h2></div>
+    <div class="work">
+      <div class="case feat rv" onclick="go('work')"><div class="bg" style="background:linear-gradient(120deg,#1257CC,#0C1626)"></div><div class="veil"></div><div class="meta"><span class="tag mono">Rebrand + Web</span><h3>Northpeak Fitness</h3><p class="res">Full rebrand and site rebuild — +212% organic traffic in 6 months.</p></div></div>
+      <div class="case rv" onclick="go('work')"><div class="bg" style="background:linear-gradient(140deg,#1E7BFF,#10233F)"></div><div class="veil"></div><div class="meta"><span class="tag mono">Paid Social</span><h3>Lumen Skincare</h3><p class="res">4.1× ROAS across Meta in the first quarter.</p></div></div>
+      <div class="case rv" onclick="go('work')"><div class="bg" style="background:linear-gradient(160deg,#16294a,#1E7BFF)"></div><div class="veil"></div><div class="meta"><span class="tag mono">SEO + Content</span><h3>Harbour & Co.</h3><p class="res">Page-one for 38 commercial keywords.</p></div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="page" id="services">
+  <div class="phero"><div class="glow"></div><div class="wrap"><span class="eyebrow mono">Services</span>
+    <h1>Everything a brand needs to get off the ground — and keep climbing.</h1></div></div>
+  <div class="sec"><div class="wrap"><div class="stages">
+    <div class="stage rv"><span class="alt">SVC / 01</span><div><h3>Web Design & Development</h3><p>Strategy-led WordPress and custom builds. Responsive, accessible, SEO-ready, and engineered to convert. Includes UX, copy structure, and ongoing care plans.</p></div><span class="arrow">→</span></div>
+    <div class="stage rv"><span class="alt">SVC / 02</span><div><h3>Branding & Identity</h3><p>Naming, logo systems, colour, type and voice. A complete brand kit your whole team can use without a designer on call.</p></div><span class="arrow">→</span></div>
+    <div class="stage rv"><span class="alt">SVC / 03</span><div><h3>Social Media Management</h3><p>Channel strategy, content production, scheduling and community management — built to compound, not chase trends.</p></div><span class="arrow">→</span></div>
+    <div class="stage rv"><span class="alt">SVC / 04</span><div><h3>Paid Advertising</h3><p>Google Ads and Meta campaigns with proper tracking, weekly optimisation and revenue-based reporting.</p></div><span class="arrow">→</span></div>
+    <div class="stage rv"><span class="alt">SVC / 05</span><div><h3>SEO</h3><p>Technical fixes, keyword strategy, and content that ranks and earns links — measured on positions and pipeline.</p></div><span class="arrow">→</span></div>
+    <div class="stage rv"><span class="alt">SVC / 06</span><div><h3>Content & Creative</h3><p>Photography, video, and editorial that gives every other channel something worth running.</p></div><span class="arrow">→</span></div>
+  </div></div></div>
+  <div class="sec" style="background:var(--paper-2)"><div class="wrap">
+    <div class="sec-head rv"><span class="eyebrow mono">How we work</span><h2>The route up.</h2></div>
+    <div class="steps">
+      <div class="step rv"><div class="n mono">STEP 01</div><h4>Strategy</h4><p>We map the goal, the audience and the gap before a pixel moves.</p></div>
+      <div class="step rv"><div class="n mono">STEP 02</div><h4>Design</h4><p>Identity and interface, shaped around how people actually decide.</p></div>
+      <div class="step rv"><div class="n mono">STEP 03</div><h4>Build</h4><p>Fast, clean, tracked. Built agentically, reviewed by humans who care.</p></div>
+      <div class="step rv"><div class="n mono">STEP 04</div><h4>Grow</h4><p>Launch is the basecamp. We optimise on revenue from day one.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="page" id="work">
+  <div class="phero"><div class="glow"></div><div class="wrap"><span class="eyebrow mono">Selected work</span><h1>Brands we helped climb.</h1></div></div>
+  <div class="sec"><div class="wrap"><div class="work">
+    <div class="case feat rv"><div class="bg" style="background:linear-gradient(120deg,#1257CC,#0C1626)"></div><div class="veil"></div><div class="meta"><span class="tag mono">Rebrand + Web</span><h3>Northpeak Fitness</h3><p class="res">Identity, website and launch campaign — +212% organic traffic, 3× enquiries in 6 months.</p></div></div>
+    <div class="case rv"><div class="bg" style="background:linear-gradient(140deg,#1E7BFF,#10233F)"></div><div class="veil"></div><div class="meta"><span class="tag mono">Paid Social</span><h3>Lumen Skincare</h3><p class="res">4.1× ROAS across Meta in Q1.</p></div></div>
+    <div class="case rv"><div class="bg" style="background:linear-gradient(160deg,#16294a,#1E7BFF)"></div><div class="veil"></div><div class="meta"><span class="tag mono">SEO + Content</span><h3>Harbour & Co.</h3><p class="res">Page-one for 38 commercial keywords.</p></div></div>
+    <div class="case rv"><div class="bg" style="background:linear-gradient(135deg,#0C1626,#1E7BFF)"></div><div class="veil"></div><div class="meta"><span class="tag mono">E-commerce</span><h3>Atlas Outdoors</h3><p class="res">Shopify rebuild — +64% conversion rate.</p></div></div>
+    <div class="case rv"><div class="bg" style="background:linear-gradient(150deg,#1257CC,#16294a)"></div><div class="veil"></div><div class="meta"><span class="tag mono">Branding</span><h3>Verve Coffee</h3><p class="res">Full identity system across 4 sites.</p></div></div>
+  </div></div></div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="page" id="about">
+  <div class="phero"><div class="glow"></div><div class="wrap"><span class="eyebrow mono">About</span><h1>A growth agency built like a guide, not a vendor.</h1></div></div>
+  <div class="sec"><div class="wrap"><div class="split">
+    <div class="rv">
+      <p class="lead">We started Everstone because too many brands get handed a logo and a login, then left to climb alone. <b>We do it the other way round.</b></p>
+      <p>Design, build and marketing live under one roof, so strategy never gets lost in a handover. We work fast — leaning on agentic development to ship more, sooner — but every release is reviewed by people who care how it lands.</p>
+      <p>The result is a partner who's accountable for the whole route: the brand, the site, the traffic, and the revenue at the top.</p>
+    </div>
+    <div class="values rv">
+      <div class="value"><h4><span class="d"></span>Outcomes over output</h4><p>We're measured on what moves — revenue, rankings, reach.</p></div>
+      <div class="value"><h4><span class="d"></span>One team, one route</h4><p>Brand, web and growth in the same room from day one.</p></div>
+      <div class="value"><h4><span class="d"></span>Built to last</h4><p>Sites and systems your team can actually run after we hand over.</p></div>
+      <div class="value"><h4><span class="d"></span>Honest reporting</h4><p>Plain numbers, plainly explained. No vanity dashboards.</p></div>
+    </div>
+  </div></div></div>
+  <div class="band sec" style="padding:88px 0"><div class="wrap"><div class="stats">
+    <div class="stat rv"><div class="num">120+</div><div class="lbl">Brands launched</div></div>
+    <div class="stat rv"><div class="num">3.4×</div><div class="lbl">Avg. ROAS</div></div>
+    <div class="stat rv"><div class="num">96%</div><div class="lbl">Client retention</div></div>
+    <div class="stat rv"><div class="num">£14M</div><div class="lbl">Revenue driven</div></div>
+  </div></div></div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="contact">
+  <div class="phero"><div class="glow"></div><div class="wrap"><span class="eyebrow mono">Start a project</span><h1>Tell us where you want to go.</h1></div></div>
+  <div class="sec"><div class="wrap"><div class="contact-grid">
+    <div class="rv">
+      <div class="field"><label>Name</label><input type="text" placeholder="Your name"></div>
+      <div class="field"><label>Email</label><input type="email" placeholder="you@company.com"></div>
+      <div class="field"><label>What do you need?</label><select><option>Web design & development</option><option>Branding & identity</option><option>Social media</option><option>Paid advertising</option><option>SEO</option><option>The full climb</option></select></div>
+      <div class="field"><label>Tell us about the project</label><textarea rows="4" placeholder="A few lines on the brand and the goal…"></textarea></div>
+      <button class="btn btn-primary" onclick="alert('Mockup form — wire up to email / CRM on build.')">Send enquiry →</button>
+    </div>
+    <div class="contact-side rv">
+      <h3>Everstone Agency</h3>
+      <p class="s-muted" style="margin-bottom:14px">Helping brands climb higher. We reply within one working day.</p>
+      <div class="cline"><span class="ic">✉</span><div><b>hello@everstoneagency.co.uk</b><small>General & new projects</small></div></div>
+      <div class="cline"><span class="ic">▶</span><div><b>@Everstoneagency</b><small>YouTube — watch the work</small></div></div>
+      <div class="cline"><span class="ic">⛰</span><div><b>everstoneagency.co.uk</b><small>United Kingdom</small></div></div>
+    </div>
+  </div></div></div>
+</section>
+</main>
+
+<!-- ============ CTA + FOOTER ============ -->
+<div class="band">
+  <svg class="contours" viewBox="0 0 1200 400" preserveAspectRatio="none"><g fill="none" stroke="#fff" stroke-width="1"><path d="M0 280 Q300 210 600 270 T1200 240" opacity=".12"/><path d="M0 320 Q300 250 600 310 T1200 280" opacity=".09"/></g></svg>
+  <div class="wrap cta-band">
+    <h2>Ready to climb higher?</h2>
+    <p>Book a call and we'll map the route from where you are to where you want to be.</p>
+    <button class="btn btn-light" onclick="go('contact')">Start a project →</button>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <div class="foot-top">
+    <div>
+      <div class="logo"><svg viewBox="0 0 100 80" style="width:34px;height:34px"><path fill="url(#lg)" d="M3 70 L30 24 L40 40 L52 8 L66 38 L72 30 L97 70 Z"/></svg><span class="logo-txt"><span class="top">EVERSTONE</span><span class="sub">AGENCY</span></span></div>
+      <p>A full-service growth agency turning ideas into design, traffic and revenue.</p>
+    </div>
+    <div class="fcol"><h5>Pages</h5><a onclick="go('home')">Home</a><a onclick="go('services')">Services</a><a onclick="go('work')">Work</a><a onclick="go('about')">About</a></div>
+    <div class="fcol"><h5>Services</h5><a onclick="go('services')">Web Design</a><a onclick="go('services')">Branding</a><a onclick="go('services')">Social Media</a><a onclick="go('services')">Marketing</a></div>
+    <div class="fcol"><h5>Connect</h5><a onclick="go('contact')">Contact</a><a href="https://www.youtube.com/@Everstoneagency" target="_blank" rel="noopener">YouTube</a><a onclick="go('contact')">Start a project</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 Everstone Agency. All rights reserved.</span><span class="mono">Helping brands climb higher ⛰</span></div>
+</div></footer>
+
+<script>
+const pages=['home','services','work','about','contact'];
+function go(id){
+  if(!pages.includes(id))id='home';
+  pages.forEach(p=>document.getElementById(p).classList.toggle('show',p===id));
+  document.querySelectorAll('.nav-links a[data-pg]').forEach(a=>a.classList.toggle('active',a.dataset.pg===id));
+  document.getElementById('navlinks').classList.remove('open');
+  window.scrollTo({top:0,behavior:'instant'});
+  runReveal();
+}
+function onScroll(){document.getElementById('hdr').classList.toggle('stuck',window.scrollY>20)}
+window.addEventListener('scroll',onScroll,{passive:true});
+let io;
+function runReveal(){
+  const els=document.querySelectorAll('.page.show .rv');
+  if(io)io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+  els.forEach(el=>{el.classList.remove('in');io.observe(el)});
+}
+runReveal();onScroll();
+</script>
+</body>
+</html>
